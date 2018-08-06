@@ -115,7 +115,7 @@
             "properties":{
                 "mode":"Incremental",
                 "templateLink":{
-                    "uri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/vnet.json', parameters('_artifactslocationSasToken'))]",
+                    "uri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/vnet.Json', parameters('_artifactslocationSasToken'))]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
