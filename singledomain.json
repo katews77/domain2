@@ -211,7 +211,7 @@
                                 ],
                                 "loadBalancerInboundNatRules":[
                                     {
-                                        "id": "[resourceId('Microsoft.network/loadbalancers/backendAddressPools', Variables('adLBName'), Variables('adRDPNAT'))]"
+                                        "id": "[resourceId('Microsoft.network/loadbalancers/inboundNatRules', Variables('adLBName'), Variables('adRDPNAT'))]"
                                     }
                                 ]
                             }
