@@ -201,7 +201,7 @@
                                 "privateIPAllocationMethod":"Static",
                                 "privateIPAddress": "[variables('adNicIPAddress')]",
                                 "subnet":{
-                                    "id": "[resourceId('microsoft.network/VirtualNetworks/subnets', variables ('VirtualNetworkName'), Variables('adLBBE'))]"
+                                    "id": "[resourceId('microsoft.network/VirtualNetworks/subnets', variables ('VirtualNetworkName'), Variables('adSubnetName'))]"
 
                                 },
                                 "loadBalancerBackendAddressPools":[
@@ -302,7 +302,7 @@
                        "typeHandlerVersion": "2.19",
                        "autoUpgradeMinorVersion": true,
                        "settings": {
-                           "ModulesUrl": "[concat(Parameters('_artifactslocation'), 'DSC/CreateADPDC.zip', parameters('_ArtifactsLocationSasToken'))]",
+                           "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
                            "configurationFunction": "CreateADPDC.ps1\\CreateADPDC",
                            "properties":{
                                "DomainName": "[parameters('domainname')]",
@@ -314,7 +314,7 @@
                                }
                            }
                        },
-                       "ProtectedSetting":{
+                       "ProtectedSettings":{
                            "items":{
                                "AdminPassword":"[parameters('adminPassword')]"
                            }
@@ -323,6 +323,20 @@
 
                    }
 
+                   
+
+                },
+                {
+                    "apiVersion": "2017-03-30",
+                    "name":"linked template",
+                    "properties":{
+                        "publisher": "Microsoft",
+                        "mode":"incremental ",
+                        "templatelink":"[concat(parameters('_artifactsLocation'), '/nestedtemplates/adVM.Json', parameters('_artifactslocationSasToken'))]",
+                        "contentVersion":"1.0.0.0",
+                        "type": ""
+
+                    }
                 }
             ]
         }
