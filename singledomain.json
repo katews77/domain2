@@ -74,6 +74,7 @@
         "adNicIPAddress":"10.0.0.4",
         "adNicName":"DPADNIC",
         "adVmName":"VeryFirstDC"
+        
 
 
      },
@@ -350,8 +351,11 @@
                 "parameters":{
                                 "adminUsername":{"value":"[parameters('adminUsername')]"},
                                 "AdminPassword":{"value":"[parameters('adminPassword')]"},
-                                "VnetID":{"value":"[variables('VirtualNetworkName')]"},
-                                "DnsPrefix":{"value":"[parameters('DNSPrefix')]"
+                                "DnsPrefix":{"value":"[parameters('DNSPrefix')]"},
+                                "VnetID":{"value":"[reference('VNet').outputs.resourceID.value]"
+
+
+
 
 
                              }
