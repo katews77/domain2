@@ -343,8 +343,8 @@
                                 "adminUsername":"[parameters('adminUsername')]",
                                 "AdminPassword":"[parameters('adminPassword')]",
                                 "VnetID":"[variables('VirtualNetworkName')]",
-                                "DomainNameLabel":"[parameters('DNSPrefix')]",
-                                
+                                "DomainNameLabel":"[parameters('DNSPrefix')]"
+
 
                              }
               }
