@@ -4,11 +4,11 @@
     "parameters": {
 
 
-      
+
       "adminUsername": { "type": "string" },
       "adminPassword": { "type": "securestring" },
       "VnetID":{"type": "string"},
-      "DomainNameLabel":{"type": "string"}
+      "DnsPrefix":{"type": "string"}
 
     },
     "variables": {
@@ -26,7 +26,7 @@
         "properties": {
           "publicIPAllocationMethod": "Dynamic",
           "dnsSettings": {
-            "domainNameLabel": "[parameters('DomainNameLabel')]"
+            "domainNameLabel": "[parameters('DnsPrefix')]"
 
           }
         }

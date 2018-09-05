@@ -342,12 +342,16 @@
               "mode": "Incremental",
               "templateLink": {
                 "uri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/adVM.Json', parameters('_artifactslocationSasToken'))]",
-                "contentVersion": "1.0.0.0",
+                "contentVersion": "1.0.0.0"
+            },
+               
+               
+               
                 "parameters":{
-                                "adminUsername":{"Value":"[parameters('adminUsername')]"},
-                                "AdminPassword":"[parameters('adminPassword')]",
-                                "VnetID":"[variables('VirtualNetworkName')]",
-                                "DomainNameLabel":"[parameters('DNSPrefix')]"
+                                "adminUsername":{"value":"[parameters('adminUsername')]"},
+                                "AdminPassword":{"value":"[parameters('adminPassword')]"},
+                                "VnetID":{"value":"[variables('VirtualNetworkName')]"},
+                                "DnsPrefix":{"value":"[parameters('DNSPrefix')]"
 
 
                              }
