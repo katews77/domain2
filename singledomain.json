@@ -344,7 +344,7 @@
                 "uri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/adVM.Json', parameters('_artifactslocationSasToken'))]",
                 "contentVersion": "1.0.0.0",
                 "parameters":{
-                                "adminUsername":"[parameters('adminUsername')]",
+                                "adminUsername":{"Value":"[parameters('adminUsername')]"},
                                 "AdminPassword":"[parameters('adminPassword')]",
                                 "VnetID":"[variables('VirtualNetworkName')]",
                                 "DomainNameLabel":"[parameters('DNSPrefix')]"
