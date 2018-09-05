@@ -334,6 +334,9 @@
             "apiVersion": "2015-01-01",
             "name": "adJoinesServerLinked",
             "type": "Microsoft.Resources/deployments",
+            "dependsOn": [
+                "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
+            ],
             "properties": {
               "mode": "Incremental",
               "templateLink": {
