@@ -24,7 +24,7 @@
         "properties": {
           "publicIPAllocationMethod": "Dynamic",
           "dnsSettings": {
-            "domainNameLabel": "[Concat(parameters('DnsPrefix'),'-EXCHPIP')]"
+            "domainNameLabel": "[Concat(parameters('DnsPrefix'),'exchpip')]"
 
           }
         }
