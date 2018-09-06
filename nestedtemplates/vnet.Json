@@ -120,9 +120,16 @@
   ],
   "outputs": {
     
-    "resourceID": {
+    "VnetresourceID": {
       "type": "string",
-      "value": "[resourceId('Microsoft.Network/VirtualNetworks', parameters('VirtualNetworkName'))]"}
+      "value": "[resourceId('Microsoft.Network/VirtualNetworks', parameters('VirtualNetworkName'))]"},
+
+      "VnetSubnet":{
+        "type": "string",
+        "value": "[resourceId( 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'),  parameters('subnetName'))]"
+      }
+
+      
   }
 
 }

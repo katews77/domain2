@@ -5,13 +5,16 @@
     "parameters": {
       "adminUsername": { "type": "string" },
       "adminPassword": { "type": "securestring" },
-      "VnetID":{"type": "string"},
-      "DnsPrefix":{"type": "string"}
+      "VnetResourceID":{"type": "string"},
+      "DnsPrefix":{"type": "string"},
+      "Subnet":{"type": "string"}
+
+      
       
     },
     "variables": {
-       
-      "subnetRef": "[concat(parameters('vnetID'),'/subnets/adSubnet')]" 
+      "subnetref": "[parameters('Subnet')]"
+      
       
 
     },
@@ -45,7 +48,7 @@
               "properties": {
                 "privateIPAllocationMethod": "Dynamic",
                 "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses','myPublicIPAddress')]" },
-                "subnet": { "id": "[variables('subnetRef')]" }
+                "subnet": { "id": "[variables('subnetref')]" }
               }
             }
           ]
