@@ -12,9 +12,9 @@
 
     },
     "variables": {
-      "vnetID": "[resourceId('Microsoft.Network/virtualNetworks','myVNet')]", 
-      "subnetRef": "[concat(variables('vnetID'),'/subnets/adSubnet')]" ,
-      "MyVNet":"[resourceId('Microsoft.network/virtualNetworks',parameters('VnetID'))]"
+       
+      "subnetRef": "[concat(parameters('vnetID'),'/subnets/adSubnet')]" 
+      
 
     },
     "resources": [
@@ -38,8 +38,8 @@
         "name": "myNic",
         "location": "[resourceGroup().location]",
         "dependsOn": [
-          "[resourceId('Microsoft.Network/publicIPAddresses/', 'myPublicIPAddress')]",
-          "[variables('MyVnet')]"
+          "[resourceId('Microsoft.Network/publicIPAddresses/', 'myPublicIPAddress')]"
+          
         ],
         "properties": {
           "ipConfigurations": [
