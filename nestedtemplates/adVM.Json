@@ -112,6 +112,10 @@
         "type":"Microsoft.Compute/virtualMachines/extensions",
         "name": "[Concat(variables('vmName'),'/joindomain')]",
         "location":"[parameters('location')]",
+        "dependsOn": [
+          "[Concat('Microsoft.compute/VirtualMachines/', variables('vmName'))]"
+          
+        ],
         
         
           
