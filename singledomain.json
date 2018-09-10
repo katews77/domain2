@@ -219,7 +219,10 @@
                             }
                         }
                     ]
+                    
                 }
+                
+
             
         },
 
@@ -353,7 +356,9 @@
                                 "AdminPassword":{"value":"[parameters('adminPassword')]"},
                                 "DnsPrefix":{"value":"[parameters('DNSPrefix')]"},
                                 "VnetResourceID":{"value":"[reference('VNet').outputs.VnetresourceID.value]"},
-                                "Subnet":{"value":"[reference('VNet').outputs.VnetSUbnet.value]"
+                                "Subnet":{"value":"[reference('VNet').outputs.VnetSUbnet.value]"},
+                                "adNicIPAddress":{"value":"[variables('adNicIPAddress')]"
+                                
                                 
 
 

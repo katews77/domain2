@@ -7,13 +7,16 @@
       "adminPassword": { "type": "securestring" },
       "VnetResourceID":{"type": "string"},
       "DnsPrefix":{"type": "string"},
-      "Subnet":{"type": "string"}
+      "Subnet":{"type": "string"},
+      "adNicIPAddress":{"type": "string"}
 
       
       
     },
     "variables": {
-      "subnetref": "[parameters('Subnet')]"
+      "subnetref": "[parameters('Subnet')]",
+      "ExchIP":"10.0.0.5",
+      "DNSServer":"[parameters('adNicIPAddress')]"
       
       
 
@@ -46,12 +49,18 @@
             {
               "name": "ipconfig1",
               "properties": {
-                "privateIPAllocationMethod": "Dynamic",
+                "privateIPAllocationMethod": "Static",
+                "privateIPAddress": "[variables('ExchIP')]",
                 "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses','myPublicIPAddress')]" },
                 "subnet": { "id": "[variables('subnetref')]" }
               }
             }
-          ]
+          ],
+          "dnsSettings":{
+            "dnsServers":[
+              "[variables('DNSServer')]"
+            ]
+          }
         }
       },
       {
