@@ -21,7 +21,8 @@
       "ExchIP":"10.0.0.5",
       "DNSServer":"[parameters('adNicIPAddress')]",
       "DomainJoinOptions":3,
-      "OUPath":""
+      "OUPath":"",
+      "vmName":"myVM"
       
       
 
@@ -71,7 +72,7 @@
       {
         "apiVersion": "2016-04-30-preview",
         "type": "Microsoft.Compute/virtualMachines",
-        "name": "myVM",
+        "name": "[variables('vmName')]",
         "location": "[resourceGroup().location]",
         "dependsOn": [
           "[resourceId('Microsoft.Network/networkInterfaces/', 'myNic')]"
@@ -109,7 +110,7 @@
       {
         "apiVersion": "2015-06-15",
         "type":"Microsoft.Compute/virtualMachines/extensions",
-        "name": "Extensions/JoinDomain",
+        "name": "[Concat(variables('vmName'),'/joindomain')]",
         "location":"[parameters('location')]",
         
         
