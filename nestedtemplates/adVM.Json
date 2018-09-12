@@ -22,10 +22,10 @@
       "DNSServer":"[parameters('adNicIPAddress')]",
       "domainJoinOptions":3,
       "vmName":"myVM",
-      "OUName":"OU=Testou;",
+      "OUName":"OU=Testou,",
       "Toplevel":"de",
-      "ouPath":"[Concat(variables('OUName'),'DC=',parameters('DnsPrefix'),';','DC=',variables('Toplevel'))]",
-      "ouPath2":"Testou"
+      "ouPath":"[Concat(variables('OUName'),'DC=',parameters('DnsPrefix'),',','DC=',variables('Toplevel'))]"
+      
 
       
       
@@ -132,7 +132,7 @@
           "autoUpgradeMinorVersion": true,
           "settings": {
             "Name": "[parameters('domainname')]",
-            "OUPath": "[variables('ouPath2')]",
+            "OUPath": "[variables('ouPath')]",
             "User": "[concat(parameters('domainname'), '\\', parameters('adminUsername'))]",
             "Restart": "true",
             "Options": "[variables('domainJoinOptions')]"
