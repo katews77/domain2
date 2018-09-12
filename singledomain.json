@@ -18,7 +18,7 @@
    
 
         },
-        "DomainName":{
+        "domainName":{
             "type": "string",
         
         "metadata":{
@@ -310,7 +310,7 @@
                            "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
                            "configurationFunction": "CreateADPDC.ps1\\CreateADPDC",
                            "properties":{
-                               "DomainName": "[parameters('domainname')]",
+                               "domainName": "[parameters('domainName')]",
                                "AdminCreds":{
                                    "Username":"[parameters('adminUsername')]",
                                    "Password":"PrivateSettingsRef:AdminPassword"
