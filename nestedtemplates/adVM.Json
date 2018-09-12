@@ -131,7 +131,7 @@
           "settings": {
             "Name": "[parameters('domainname')]",
             "OUPath": "[variables('ouPath')]",
-            "User": "[concat(parameters('domainname'), '\\', parameters('adminusername'))]",
+            "User": "[concat(parameters('domainname'), '\\', parameters('adminUsername'))]",
             "Restart": "true",
             "Options": "[variables('domainJoinOptions')]"
 
@@ -140,7 +140,7 @@
           },
           "protectedSettings": {
 
-            "Password": "[parameters('adminpassword')]"
+            "Password": "[parameters('adminPassword')]"
   
           }
         }
