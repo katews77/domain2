@@ -24,7 +24,9 @@
       "vmName":"myVM",
       "OUName":"OU=Testou;",
       "Toplevel":"de",
-      "ouPath":"[Concat(variables('OUName'),'DC=',parameters('DnsPrefix'),';','DC=',variables('Toplevel'))]"
+      "ouPath":"[Concat(variables('OUName'),'DC=',parameters('DnsPrefix'),';','DC=',variables('Toplevel'))]",
+      "ouPath2":"Testou"
+
       
       
       
@@ -130,7 +132,7 @@
           "autoUpgradeMinorVersion": true,
           "settings": {
             "Name": "[parameters('domainname')]",
-            "OUPath": "[variables('ouPath')]",
+            "OUPath": "[variables('ouPath2')]",
             "User": "[concat(parameters('domainname'), '\\', parameters('adminUsername'))]",
             "Restart": "true",
             "Options": "[variables('domainJoinOptions')]"
