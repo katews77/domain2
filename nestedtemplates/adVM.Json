@@ -20,7 +20,7 @@
       "subnetref": "[parameters('Subnet')]",
       "ExchIP":"10.0.0.5",
       "DNSServer":"[parameters('adNicIPAddress')]",
-      "domainJoinOptions":3,
+      "domainJoinOptions":"3",
       "vmName":"myVM",
       "OUName":"ou=Testou,",
       "Toplevel":"de",
