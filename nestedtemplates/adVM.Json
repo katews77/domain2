@@ -22,9 +22,9 @@
       "DNSServer":"[parameters('adNicIPAddress')]",
       "domainJoinOptions":3,
       "vmName":"myVM",
-      "OUName":"OU=Testou,",
+      "OUName":"ou=Testou,",
       "Toplevel":"de",
-      "ouPath":"[Concat(variables('OUName'),'DC=',parameters('DnsPrefix'),',','DC=',variables('Toplevel'))]"
+      "ouPath":"[Concat(variables('OUName'),'dc=',parameters('DnsPrefix'),',','dc=',variables('Toplevel'))]"
       
 
       
