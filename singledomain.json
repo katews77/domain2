@@ -388,7 +388,7 @@
 
                 "templateLink": {
 
-                    "uri": "[concat(parameters('_artifactsLocation'), '/vNet-Dns.Json ', parameters('_artifactsLocationSasToken'))]",
+                    "uri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/vNet-Dns.Json ', parameters('_artifactsLocationSasToken'))]",
 
                     "contentVersion": "1.0.0.0"
 
