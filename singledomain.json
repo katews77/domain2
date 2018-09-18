@@ -73,7 +73,8 @@
         "adRDPNAT":"adRDP",
         "adNicIPAddress":"10.0.0.4",
         "adNicName":"DPADNIC",
-        "adVmName":"VeryFirstDC"
+        "adVmName":"VeryFirstDC",
+        "extensionName":"CreateAD"
         
 
 
@@ -295,11 +296,12 @@
             "resources": [
                 {
                    "type": "extensions",
-                   "Name":"CreateActiveDirectoryForest",
+                   "Name":"[variables('extensionName')]",
                    "apiVersion": "2017-03-30",
                    "location":"[parameters('Location')]",
-                   "Dependson":[
-                       "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
+                   "Dependson":["[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
+                  
+                       
                    ],
                    "properties":{
                        "publisher": "Microsoft.Powershell",
@@ -359,7 +361,10 @@
                                 "Subnet":{"value":"[reference('VNet').outputs.VnetSUbnet.value]"},
                                 "adNicIPAddress":{"value":"[variables('adNicIPAddress')]"},
                                 "domainname":{"value":"[parameters('domainname')]"},
-                                "location":{"value":"[parameters('location')]"}
+                                "location":{"value":"[parameters('location')]"},
+                                "adVm":{"value":"[variables('adVmName')]"},
+                                "adExtension":{"value":"[variables('extensionName')]"}
+
 
 
               }
