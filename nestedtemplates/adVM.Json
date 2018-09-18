@@ -24,7 +24,9 @@
       "vmName":"myVM",
       "OUName":"ou=Testou,",
       "Toplevel":"de",
-      "ouPath":"[Concat(variables('OUName'),'dc=',parameters('DnsPrefix'),',','dc=',variables('Toplevel'))]"
+      "ouPath":"[Concat(variables('OUName'),'dc=',parameters('DnsPrefix'),',','dc=',variables('Toplevel'))]",
+      "ExtensionName":"JoinDomain"
+      
       
 
       
@@ -115,10 +117,10 @@
       {
         "apiVersion": "2015-06-15",
         "type":"Microsoft.Compute/virtualMachines/extensions",
-        "name": "[Concat(variables('vmName'),'/joindomain')]",
+        "name": "[variables('extensionName')]",
         "location":"[parameters('location')]",
         "dependsOn": [
-          "[Concat('Microsoft.compute/VirtualMachines/', variables('vmName'))]"
+          "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('vmName'), variables('extensionName'))]"
           
         ],
         
