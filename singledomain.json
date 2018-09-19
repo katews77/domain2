@@ -73,8 +73,8 @@
         "adRDPNAT":"adRDP",
         "adNicIPAddress":"10.0.0.4",
         "adNicName":"DPADNIC",
-        "adVmName":"VeryFirstDC",
-        "extensionName":"CreateAD"
+        "adVmName":"veryFirstDC",
+        "extensionName":"createAD"
         
 
 
@@ -342,7 +342,8 @@
             "name": "adJoinesServerLinked",
             "type": "Microsoft.Resources/deployments",
             "dependsOn": [
-                "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
+                "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]",
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVmName'), variables('extensionName'))]"
             ],
             "properties": {
               "mode": "Incremental",
@@ -361,9 +362,8 @@
                                 "Subnet":{"value":"[reference('VNet').outputs.VnetSUbnet.value]"},
                                 "adNicIPAddress":{"value":"[variables('adNicIPAddress')]"},
                                 "domainname":{"value":"[parameters('domainname')]"},
-                                "location":{"value":"[parameters('location')]"},
-                                "adVm":{"value":"[variables('adVmName')]"},
-                                "adExtension":{"value":"[variables('extensionName')]"}
+                                "location":{"value":"[parameters('location')]"}
+
 
 
 

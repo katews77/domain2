@@ -10,9 +10,8 @@
       "Subnet":{"type": "string"},
       "adNicIPAddress":{"type": "string"},
       "location":{"type": "string"},
-      "Domainname":{"type": "string"},
-      "adVM":{"type": "string"},
-      "adExtension":{"type": "string"}
+      "Domainname":{"type": "string"}
+
 
 
       
@@ -122,7 +121,8 @@
         "name": "[variables('extensionName')]",
         "location":"[parameters('location')]",
         "dependsOn": [
-          "[resourceId('Microsoft.Compute/virtualMachines/extensions', parameters('adVm'), parameters('Adextension'))]"
+          "[resourceId('Microsoft.compute/VirtualMachines/', 'myVM')]"
+          
           
         ],
         
