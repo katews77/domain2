@@ -120,13 +120,8 @@
         "type":"Microsoft.Compute/virtualMachines/extensions",
         "name": "[variables('extensionName')]",
         "location":"[parameters('location')]",
-        "dependsOn": [
-          "[resourceId('Microsoft.compute/VirtualMachines/', 'myVM')]"
-          
-          
-        ],
-        
-        
+    
+
           
         
         "properties":{
