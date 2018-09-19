@@ -296,7 +296,7 @@
             "resources": [
                 {
                    "type": "extensions",
-                   "Name":"[variables('extensionName')]",
+                   "Name":"createActiveDirectoryForest",
                    "apiVersion": "2017-03-30",
                    "location":"[parameters('Location')]",
                    "Dependson":["[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
@@ -343,7 +343,8 @@
             "type": "Microsoft.Resources/deployments",
             "dependsOn": [
                 "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]",
-                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVmName'), variables('extensionName'))]"
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'CreateActiveDirectoryForest')]"
+                
             ],
             "properties": {
               "mode": "Incremental",
