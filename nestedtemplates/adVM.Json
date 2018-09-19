@@ -120,6 +120,10 @@
         "type":"Microsoft.Compute/virtualMachines/extensions",
         "name": "[concat(variables('vmName'), '/' ,variables('extensionName'))]",
         "location":"[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.compute/VirtualMachines',variables('vmName'))]"
+          
+        ],
     
           
         
