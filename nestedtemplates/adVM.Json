@@ -157,6 +157,9 @@
         "type":"Microsoft.Compute/virtualMachines/extensions",
         "name": "ExchangePreRequisites",
         "location":"[parameters('Location')]",
+        "Dependson":[
+          "[resourceId('Microsoft.compute/VirtualMachines', Variables('VMName'))]"
+      ],
         "apiVersion": "2017-03-30",
         "properties":{
                   "publisher": "Microsoft.Powershell",
