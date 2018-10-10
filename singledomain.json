@@ -2,6 +2,7 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": { 
+        
         "adminUsername":{
             "type": "string",
             "metadata": {
@@ -17,7 +18,7 @@
    
 
         },
-        "DomainName":{
+        "domainName":{
             "type": "string",
         
         "metadata":{
@@ -72,7 +73,9 @@
         "adRDPNAT":"adRDP",
         "adNicIPAddress":"10.0.0.4",
         "adNicName":"DPADNIC",
-        "adVmName":"VeryFirstDC"
+        "adVmName":"veryFirstDC",
+        "extensionName":"createAD"
+        
 
 
      },
@@ -201,7 +204,7 @@
                                 "privateIPAllocationMethod":"Static",
                                 "privateIPAddress": "[variables('adNicIPAddress')]",
                                 "subnet":{
-                                    "id": "[resourceId('microsoft.network/VirtualNetworks/subnets', variables ('VirtualNetworkName'), Variables('adLBBE'))]"
+                                    "id": "[resourceId('microsoft.network/VirtualNetworks/subnets', variables ('VirtualNetworkName'), Variables('adSubnetName'))]"
 
                                 },
                                 "loadBalancerBackendAddressPools":[
@@ -217,7 +220,10 @@
                             }
                         }
                     ]
+                    
                 }
+                
+
             
         },
 
@@ -290,11 +296,12 @@
             "resources": [
                 {
                    "type": "extensions",
-                   "Name":"CreateActiveDirectoryForest",
+                   "Name":"createActiveDirectoryForest",
                    "apiVersion": "2017-03-30",
                    "location":"[parameters('Location')]",
-                   "Dependson":[
-                       "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
+                   "Dependson":["[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
+                  
+                       
                    ],
                    "properties":{
                        "publisher": "Microsoft.Powershell",
@@ -302,10 +309,10 @@
                        "typeHandlerVersion": "2.19",
                        "autoUpgradeMinorVersion": true,
                        "settings": {
-                           "ModulesUrl": "[concat(Parameters('_artifactslocation'), 'DSC/CreateADPDC.zip', parameters('_ArtifactsLocationSasToken'))]",
+                           "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
                            "configurationFunction": "CreateADPDC.ps1\\CreateADPDC",
                            "properties":{
-                               "DomainName": "[parameters('domainname')]",
+                               "domainName": "[parameters('domainName')]",
                                "AdminCreds":{
                                    "Username":"[parameters('adminUsername')]",
                                    "Password":"PrivateSettingsRef:AdminPassword"
@@ -314,7 +321,7 @@
                                }
                            }
                        },
-                       "ProtectedSetting":{
+                       "ProtectedSettings":{
                            "items":{
                                "AdminPassword":"[parameters('adminPassword')]"
                            }
@@ -323,11 +330,120 @@
 
                    }
 
+                   
+
                 }
+ 
             ]
+        },
+
+        {
+            "apiVersion": "2015-01-01",
+            "name": "adJoinedServerLinked",
+            "type": "Microsoft.Resources/deployments",
+            "dependsOn": [
+                "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]",
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'CreateActiveDirectoryForest')]"
+                
+            ],
+            "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                "uri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/adVM.Json', parameters('_artifactslocationSasToken'))]",
+                "contentVersion": "1.0.0.0"
+            },
+               
+               
+               
+                "parameters":{
+                                "adminUsername":{"value":"[parameters('adminUsername')]"},
+                                "adminPassword":{"value":"[parameters('adminPassword')]"},
+                                "DnsPrefix":{"value":"[parameters('DNSPrefix')]"},
+                                "VnetResourceID":{"value":"[reference('VNet').outputs.VnetresourceID.value]"},
+                                "Subnet":{"value":"[reference('VNet').outputs.VnetSUbnet.value]"},
+                                "adNicIPAddress":{"value":"[variables('adNicIPAddress')]"},
+                                "domainname":{"value":"[parameters('domainname')]"},
+                                "location":{"value":"[parameters('location')]"}
+
+
+
+
+              }
+             
+            }
+           },
+
+           
+        {
+
+            "type": "Microsoft.Resources/deployments",
+
+            "name": "UpdateVNetDNS",
+
+            "apiVersion": "2016-02-01",
+
+            "dependsOn": [
+
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'CreateActiveDirectoryForest')]"
+
+            ],
+
+            "properties": {
+
+                "mode": "Incremental",
+
+                "templateLink": {
+
+                    "uri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/vNet-Dns.Json ', parameters('_artifactsLocationSasToken'))]",
+
+                    "contentVersion": "1.0.0.0"
+
+                },
+
+                "parameters": {
+
+                    "virtualNetworkName": {
+
+                        "value": "[variables('virtualNetworkName')]"
+
+                    },
+
+                    "virtualNetworkAddressRange": {
+
+                        "value": "[variables('virtualNetworkAddressRange')]"
+
+                    },
+
+                    "subnetName": {
+
+                        "value": "[variables('adSubnetName')]"
+
+                    },
+
+                    "subnetRange": {
+
+                        "value": "[variables('adSubnetAddressPrefix')]"
+
+                    },
+
+                    "DNSServerAddress": {
+
+                        "value": [
+
+                            "[variables('adNicIPAddress')]"
+
+                        ]
+
+                    }
+
+                }
+
+            }
+
         }
     
 
       ],
+
     "outputs": {  }
 }
