@@ -11,7 +11,7 @@
       "adNicIPAddress":{"type": "string"},
       "location":{"type": "string"},
       "Domainname":{"type": "string"},
-      "_ArtifactsLocation":{"type": "string"}
+      "_artifactsLocation":{"type": "string"}
 
 
 
@@ -170,7 +170,7 @@
                   "typeHandlerVersion": "2.19",
                   "autoUpgradeMinorVersion": true,
                   "settings": {
-                    "ModulesUrl": "[concat(Parameters('_ArtifactsLocation'), 'DSC/CreateADPDC.zip', variables('_ArtifactsLocationSasToken'))]",
+                    "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
                     "configurationFunction": "ExchPre.ps1\\ExchangePreReqs"
                   }
 

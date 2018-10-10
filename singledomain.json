@@ -364,7 +364,7 @@
                                 "adNicIPAddress":{"value":"[variables('adNicIPAddress')]"},
                                 "domainname":{"value":"[parameters('domainname')]"},
                                 "location":{"value":"[parameters('location')]"},
-                                "_ArtifactsLocation":{"value":"[parameters('_ArtifactsLocation')]"}
+                                "_artifactsLocation":{"value":"[parameters('_artifactsLocation')]"}
                                 
 
 
