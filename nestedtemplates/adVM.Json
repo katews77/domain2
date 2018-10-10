@@ -10,7 +10,8 @@
       "Subnet":{"type": "string"},
       "adNicIPAddress":{"type": "string"},
       "location":{"type": "string"},
-      "Domainname":{"type": "string"}
+      "Domainname":{"type": "string"},
+      "_ArtifactsLocation":{"type": "string"}
 
 
 
@@ -27,7 +28,9 @@
       "Toplevel":"de",
       "ouPath":"[Concat(variables('OUName'),'dc=',parameters('DnsPrefix'),',','dc=',variables('Toplevel'))]",
       "ExtensionName":"JoinDomain",
-      "_ArtifactsLocationSasToken":""
+      "_ArtifactsLocationSasToken":"",
+      "Extension2Name":"ExchangePre"
+      
       
       
 
@@ -155,7 +158,7 @@
       },
       {
         "type":"Microsoft.Compute/virtualMachines/extensions",
-        "name": "ExchangePreRequisites",
+        "name": "[concat(variables('vmName'), '/' ,variables('extension2Name'))]",
         "location":"[parameters('Location')]",
         "Dependson":[
           "[resourceId('Microsoft.compute/VirtualMachines', Variables('VMName'))]"
@@ -167,7 +170,7 @@
                   "typeHandlerVersion": "2.19",
                   "autoUpgradeMinorVersion": true,
                   "settings": {
-                    "ModulesUrl": "[concat(Parameters('_artifactslocation'), 'DSC/CreateADPDC.zip', variables('_ArtifactsLocationSasToken'))]",
+                    "ModulesUrl": "[concat(Parameters('_ArtifactsLocation'), 'DSC/CreateADPDC.zip', variables('_ArtifactsLocationSasToken'))]",
                     "configurationFunction": "ExchPre.ps1\\ExchangePreReqs"
                   }
 

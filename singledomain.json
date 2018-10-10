@@ -363,7 +363,9 @@
                                 "Subnet":{"value":"[reference('VNet').outputs.VnetSUbnet.value]"},
                                 "adNicIPAddress":{"value":"[variables('adNicIPAddress')]"},
                                 "domainname":{"value":"[parameters('domainname')]"},
-                                "location":{"value":"[parameters('location')]"}
+                                "location":{"value":"[parameters('location')]"},
+                                "_ArtifactsLocation":{"value":"[parameters('_ArtifactsLocation')]"}
+                                
 
 
 
