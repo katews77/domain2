@@ -160,15 +160,17 @@
         "type":"Microsoft.Compute/virtualMachines/extensions",
         "name": "[concat(variables('vmName'), '/' ,variables('extension2Name'))]",
         "location":"[parameters('Location')]",
+        "apiVersion": "2017-03-30",
         "Dependson":[
           "[resourceId('Microsoft.compute/VirtualMachines', Variables('VMName'))]"
       ],
-        "apiVersion": "2017-03-30",
+        
         "properties":{
                   "publisher": "Microsoft.Powershell",
                   "type": "DSC",
                   "typeHandlerVersion": "2.19",
                   "autoUpgradeMinorVersion": true,
+                 
                   "settings": {
                     "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
                     "configurationFunction": "ExchPre.ps1\\ExchangePreReqs"
