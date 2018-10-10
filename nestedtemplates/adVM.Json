@@ -168,7 +168,7 @@
                   "autoUpgradeMinorVersion": true,
                   "settings": {
                     "ModulesUrl": "[concat(Parameters('_artifactslocation'), 'DSC/CreateADPDC.zip', variables('_ArtifactsLocationSasToken'))]",
-                    "configurationFunction": "ExchPre.ps1\\CreateADPDC"
+                    "configurationFunction": "ExchPre.ps1\\ExchangePreReqs"
                   }
 
 
