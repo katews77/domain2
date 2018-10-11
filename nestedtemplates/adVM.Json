@@ -172,7 +172,7 @@
                   "autoUpgradeMinorVersion": true,
                  
                   "settings": {
-                    "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
+                    "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/InstallExchange.zip",
                     "configurationFunction": "ExchPre.ps1\\ExchangePreReqs"
                   }
 
