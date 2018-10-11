@@ -346,7 +346,7 @@
             "type": "Microsoft.Resources/deployments",
             "dependsOn": [
                 "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]",
-                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'CreateActiveDirectoryForest')]"
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'createAD')]"
                 
             ],
             "properties": {
@@ -389,7 +389,7 @@
 
             "dependsOn": [
 
-                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'CreateActiveDirectoryForest')]"
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'createAD')]"
 
             ],
 
