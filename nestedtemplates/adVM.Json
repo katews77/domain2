@@ -304,6 +304,37 @@
 
 
 
-    }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "Name":"createActiveDirectoryForest",
+      "apiVersion": "2017-03-30",
+      "location":"[parameters('Location')]",
+      "Dependson":["[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
+     
+          
+      ],
+      "properties":{
+          "publisher": "Microsoft.Powershell",
+          "type": "DSC",
+          "typeHandlerVersion": "2.19",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+              "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
+              "configurationFunction": "CreateADPDC.ps1\\CreateADPDC"
+  
+          }
+
+
+
+      }
+
+      
+
+   }
+
+
 
   ]
+
+}
