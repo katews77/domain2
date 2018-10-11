@@ -292,12 +292,11 @@
                         }
                     ]
                 }
-            }
-        },
-            
+            },
+            "resources": [
                 {
-                   "type": "Microsoft.Compute/virtualMachines/extensions",
-                   "name": "[concat(variables('adVmName'), '/' ,variables('extensionName'))]",
+                   "type": "extensions",
+                   "Name":"createActiveDirectoryForest",
                    "apiVersion": "2017-03-30",
                    "location":"[parameters('Location')]",
                    "Dependson":["[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
@@ -333,20 +332,18 @@
 
                    
 
-                },
+                }
  
-            
-        
-
-    
+            ]
+        },
 
         {
             "apiVersion": "2015-01-01",
-            "name": "adJoinedServerLinked",
+            "name": "adJoinesServerLinked",
             "type": "Microsoft.Resources/deployments",
             "dependsOn": [
                 "[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]",
-                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'createAD')]"
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'CreateActiveDirectoryForest')]"
                 
             ],
             "properties": {
@@ -366,9 +363,7 @@
                                 "Subnet":{"value":"[reference('VNet').outputs.VnetSUbnet.value]"},
                                 "adNicIPAddress":{"value":"[variables('adNicIPAddress')]"},
                                 "domainname":{"value":"[parameters('domainname')]"},
-                                "location":{"value":"[parameters('location')]"},
-                                "_artifactsLocation":{"value":"[parameters('_artifactsLocation')]"}
-                                
+                                "location":{"value":"[parameters('location')]"}
 
 
 
@@ -389,7 +384,7 @@
 
             "dependsOn": [
 
-                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'createAD')]"
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('adVMName'), 'CreateActiveDirectoryForest')]"
 
             ],
 
