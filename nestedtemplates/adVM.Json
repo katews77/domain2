@@ -54,7 +54,8 @@
 
     "ouPath":"[Concat(variables('OUName'),'dc=',parameters('DnsPrefix'),',','dc=',variables('Toplevel'))]",
 
-    "ExtensionName":"JoinDomain"
+    "ExtensionName":"JoinDomain",
+    "Extension2Name":"ExchPrereqs"
 
     
 
@@ -307,10 +308,10 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "Name":"createActiveDirectoryForest",
+      "name":"[concat(variables('vmName'), '/' ,variables('extension2Name'))]",
       "apiVersion": "2017-03-30",
       "location":"[parameters('Location')]",
-      "Dependson":["[resourceId('Microsoft.compute/VirtualMachines', Variables('adVMName'))]"
+      "Dependson":["[resourceId('Microsoft.compute/VirtualMachines', Variables('vmName'))]"
      
           
       ],
