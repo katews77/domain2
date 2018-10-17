@@ -308,8 +308,9 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
+      
       "name":"[concat(variables('vmName'), '/' ,variables('extension2Name'))]",
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2018-06-01",
       "location":"[parameters('location')]",
       "Dependson":[
       "[resourceId('Microsoft.compute/virtualMachines/extensions', variables('vmName'),variables ('extension2Name'))]"
@@ -319,7 +320,7 @@
       "properties":{
           "publisher": "Microsoft.Powershell",
           "type": "DSC",
-          "typeHandlerVersion": "2.19",
+          "typeHandlerVersion": "2.76",
           "autoUpgradeMinorVersion": true,
           "settings": {
               "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
