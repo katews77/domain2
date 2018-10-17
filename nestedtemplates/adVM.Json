@@ -24,16 +24,6 @@
 
     "Domainname":{"type": "string"}
 
-
-
-
-
-
-
-    
-
-    
-
   },
 
   "variables": {
@@ -56,19 +46,6 @@
 
     "ExtensionName":"JoinDomain",
     "Extension2Name":"ExchPrereqs"
-
-    
-
-    
-
-
-
-    
-
-    
-
-    
-
 
 
   },
@@ -253,9 +230,6 @@
 
   
 
-        
-
-      
 
       "properties":{
 
@@ -324,7 +298,12 @@
           "autoUpgradeMinorVersion": true,
           "settings": {
               "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
-              "configurationFunction": "ExchPre.ps1\\ExchangePreReqs"
+              "configurationFunction": "ExchPre.ps1\\ExchangePreReqs",
+              "properties": {
+
+
+
+              }
   
           },
 
