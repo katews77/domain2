@@ -259,7 +259,7 @@
 
       "properties":{
 
-        "publisher": "Microsoft.compute",
+        "publisher": "Microsoft.Compute",
 
         "type": "JsonADDomainExtension",
 
@@ -312,7 +312,7 @@
       "apiVersion": "2017-03-30",
       "location":"[parameters('location')]",
       "Dependson":[
-      "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('vmName'),variables ('extension2Name'))]"
+      "[resourceId('Microsoft.compute/virtualMachines/extensions', variables('vmName'),variables ('extension2Name'))]"
      
           
       ],
