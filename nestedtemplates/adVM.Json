@@ -310,8 +310,9 @@
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name":"[concat(variables('vmName'), '/' ,variables('extension2Name'))]",
       "apiVersion": "2017-03-30",
-      "location":"[parameters('Location')]",
-      "Dependson":["[resourceId('Microsoft.compute/VirtualMachines', Variables('vmName'))]"
+      "location":"[parameters('location')]",
+      "Dependson":[
+      "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('vmName'),variables ('extension2Name'))]"
      
           
       ],
