@@ -309,7 +309,7 @@
                        "typeHandlerVersion": "2.19",
                        "autoUpgradeMinorVersion": true,
                        "settings": {
-                           "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
+                           "ModulesUrl": "https://imagesource.blob.core.windows.net/bins/createadpdc.zip",
                            "configurationFunction": "CreateADPDC.ps1\\CreateADPDC",
                            "properties":{
                                "domainName": "[parameters('domainName')]",
