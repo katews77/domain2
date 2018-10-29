@@ -136,9 +136,9 @@ function DownloadISO {
 
     
 
-        "Delete the temp file: $destinationFile" | Tee-Object -FilePath $logFilePath -Append
+      #  "Delete the temp file: $destinationFile" | Tee-Object -FilePath $logFilePath -Append
 
-        Remove-Item -Path $destinationFile -Force
+       # Remove-Item -Path $destinationFile -Force
 
     }
 
