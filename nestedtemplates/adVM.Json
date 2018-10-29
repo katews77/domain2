@@ -280,6 +280,39 @@
 
 
     },
+
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "location":"[parameters('location')]",
+      "name": "[Concat(Variables('vmName'),'/CustomScriptExtension')]",
+      "dependsOn": [
+
+        "[resourceId('Microsoft.compute/VirtualMachines',variables('vmName'))]"
+
+        
+
+      ],
+      "properties":{
+        "publisher": "Microsoft.Compute",
+        "type": "CustomScriptExtension",
+        "typeHandlerVersion": "1.4",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          
+          "fileUris":[
+            "[variables('modulesUrlExchangeISODownload')]"
+
+          ],
+          "commandToExecute":"[concat('powershell -executionPolicy Unrestricted -file',variables('modulesExchangeISODownload'),variables('exchangeISOUri'),'-destination',variables(exchangeInstallerPath))]"
+        }
+
+        
+      }
+      
+
+
+    },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       
