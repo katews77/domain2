@@ -334,7 +334,7 @@
           "typeHandlerVersion": "2.76",
           "autoUpgradeMinorVersion": true,
           "settings": {
-              "ModulesUrl": "https://imagesource.blob.core.windows.net/kalle/createadpdc.zip",
+              "ModulesUrl": "https://imagesource.blob.core.windows.net/bins/createadpdc.zip",
               "configurationFunction": "ExchPre.ps1\\ExchangePreReqs",
               "properties": {
 
