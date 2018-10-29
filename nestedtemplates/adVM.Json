@@ -308,7 +308,7 @@
             "[variables('modulesUrlExchangeISODownload')]"
 
           ],
-          "commandToExecute":"[concat('powershell -executionPolicy Unrestricted -file ',variables('modulesExchangeISODownload'),variables('exchangeISOUri'),'-destination ',variables('exchangeInstallerPath'))]"
+          "commandToExecute":"[concat('powershell -executionPolicy Unrestricted -file ',variables('modulesExchangeISODownload'), ' -uri ',variables('exchangeISOUri'),' -destination ',variables('exchangeInstallerPath'))]"
         }
 
         
