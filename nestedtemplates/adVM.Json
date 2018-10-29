@@ -47,7 +47,7 @@
     "ExtensionName":"JoinDomain",
     "Extension2Name":"ExchPrereqs",
     "exchangeInstallerPath":"ExchangeBinaries",
-    "exchangeISoUri":"https://www.microsoft.com/en-us/download/confirmation.aspx?id=57068",
+    "exchangeISOUri":"https://imagesource.blob.core.windows.net/exchangeimage/ExchangeServer2016-x64-cu10.iso",
     "modulesExchangeISODownload":"downloadEXCHimg.ps1",
     "modulesURLExchangeISODownload":"https://raw.githubusercontent.com/katews77/domain2/WithExchBins/downloadEXCHImg.ps1"
 
