@@ -343,7 +343,8 @@
                   "Admincreds":{
 
                     "Username":"[parameters('adminUsername')]",
-                    "Password":"PrivateSettingsRef:AdminPassword"
+                    "Password":"PrivateSettingsRef:adminPassword"
+                    
                   }
 
 
