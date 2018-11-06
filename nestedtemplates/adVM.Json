@@ -46,6 +46,7 @@
 
     "ExtensionName":"JoinDomain",
     "Extension2Name":"ExchPrereqs",
+    "Extension3Name":"CustomScriptExtension",
     "exchangeInstallerPath":"ExchangeBinaries",
     "exchangeISOUri":"https://imagesource.blob.core.windows.net/exchangeimage/ExchangeServer2016-x64-cu9.iso",
     "modulesExchangeISODownload":"downloadEXCHimg.ps1",
@@ -289,7 +290,7 @@
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "location":"[parameters('location')]",
-      "name": "[Concat(Variables('vmName'),'/CustomScriptExtension')]",
+      "name": "[Concat(Variables('vmName'),'/',variables('extension3Name'))]",
       "dependsOn": [
 
         "[resourceId('Microsoft.compute/virtualMachines/extensions', variables('vmName'),variables ('extension2Name'))]"
@@ -324,20 +325,26 @@
       "apiVersion": "2018-06-01",
       "location":"[parameters('location')]",
       "Dependson":[
-      "[resourceId('Microsoft.compute/virtualMachines/extensions', variables('vmName'),variables ('extensionName'))]"
+      "[resourceId('Microsoft.compute/virtualMachines/extensions', variables('vmName'),variables ('Extension3Name'))]"
      
           
       ],
       "properties":{
           "publisher": "Microsoft.Powershell",
           "type": "DSC",
-          "typeHandlerVersion": "2.72",
+          "typeHandlerVersion": "2.76",
           "autoUpgradeMinorVersion": true,
           "settings": {
-              "ModulesUrl": "https://imagesource.blob.core.windows.net/bins/createadpdc.zip",
-              "configurationFunction": "ExchPre.ps1\\ExchangePreReqs",
+              "ModulesUrl": "https://imagesource.blob.core.windows.net/bins/createaExch.zip",
+              "configurationFunction": "AutoExchange.ps1\\ExchangePreReqs",
               "properties": {
 
+                "domainName": "[parameters('domainName')]",
+                  "Admincreds":{
+
+                    "Username":"[parameters('adminUsername')]",
+                    "Password":"PrivateSettingsRef:AdminPassword"
+                  }
 
 
               }
@@ -353,6 +360,8 @@
   
   
           }
+
+          
 
 
 
