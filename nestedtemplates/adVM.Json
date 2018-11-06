@@ -293,7 +293,7 @@
       "name": "[Concat(Variables('vmName'),'/',variables('extension3Name'))]",
       "dependsOn": [
 
-        "[resourceId('Microsoft.compute/virtualMachines/extensions', variables('vmName'),variables ('extension2Name'))]"
+        "[resourceId('Microsoft.compute/virtualMachines/extensions', variables('vmName'),variables ('extensionName'))]"
 
         
 
