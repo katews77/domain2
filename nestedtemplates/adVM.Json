@@ -340,11 +340,11 @@
               "properties": {
 
                 "domainName": "[parameters('domainName')]",
-                  "Admincreds":{
+                  "adminCreds":{
 
                     "Username":"[parameters('adminUsername')]",
-                    "Password":"PrivateSettingsRef:adminPassword"
-                    
+                    "Password":"PrivateSettingsRef:Password"
+
                   }
 
 
